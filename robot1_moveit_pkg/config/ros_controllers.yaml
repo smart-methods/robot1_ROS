@@ -1,0 +1,56 @@
+left_hand_controller:
+  type: effort_controllers/JointTrajectoryController
+  joints:
+    - L0
+    - L1
+    - L2
+    - L3
+  gains:
+    L0:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    L1:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    L2:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    L3:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+right_hand_controller:
+  type: effort_controllers/JointTrajectoryController
+  joints:
+    - R0
+    - R1
+    - R2
+    - R3
+  gains:
+    R0:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    R1:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    R2:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    R3:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1

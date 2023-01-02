@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--This does not replace URDF, and is not an extension of URDF.
+    This is a format for representing semantic information about the robot structure.
+    A URDF file must exist for this robot as well, where the joints and the links that are referenced are defined
+-->
+<robot name="robot1">
+    <!--GROUPS: Representation of a set of joints and links. This can be useful for specifying DOF to plan for, defining arms, end effectors, etc-->
+    <!--LINKS: When a link is specified, the parent joint of that link (if it exists) is automatically included-->
+    <!--JOINTS: When a joint is specified, the child link of that joint (which will always exist) is automatically included-->
+    <!--CHAINS: When a chain is specified, all the links along the chain (including endpoints) are included in the group. Additionally, all the joints that are parents to included links are also included. This means that joints along the chain and the parent joint of the base link are included in the group-->
+    <!--SUBGROUPS: Groups can also be formed by referencing to already defined group names-->
+    <group name="left_hand">
+        <joint name="L0"/>
+        <joint name="L1"/>
+        <joint name="L2"/>
+        <joint name="L3"/>
+    </group>
+    <group name="right_hand">
+        <joint name="R0"/>
+        <joint name="R1"/>
+        <joint name="R2"/>
+        <joint name="R3"/>
+    </group>
+    <group name="end_left">
+        <link name="Body"/>
+    </group>
+    <group name="end_right">
+        <link name="Body"/>
+    </group>
+    <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
+    <end_effector name="left_end" parent_link="Left hand 3" group="end_left"/>
+    <end_effector name="right_end" parent_link="Right hand 3" group="end_right"/>
+    <!--VIRTUAL JOINT: Purpose: this element defines a virtual joint between a robot link and an external frame of reference (considered fixed with respect to the robot)-->
+    <virtual_joint name="virtual_joint" type="fixed" parent_frame="map" child_link="Body"/>
+    <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
+    <disable_collisions link1="Body" link2="Left hand 0" reason="Adjacent"/>
+    <disable_collisions link1="Body" link2="Left hand 1" reason="Default"/>
+    <disable_collisions link1="Body" link2="Right hand 0" reason="Adjacent"/>
+    <disable_collisions link1="Body" link2="Right hand 1" reason="Default"/>
+    <disable_collisions link1="Left hand 0" link2="Left hand 1" reason="Adjacent"/>
+    <disable_collisions link1="Left hand 0" link2="Left hand 2" reason="Never"/>
+    <disable_collisions link1="Left hand 0" link2="Left hand 3" reason="Never"/>
+    <disable_collisions link1="Left hand 0" link2="Right hand 0" reason="Never"/>
+    <disable_collisions link1="Left hand 0" link2="Right hand 1" reason="Never"/>
+    <disable_collisions link1="Left hand 0" link2="Right hand 2" reason="Never"/>
+    <disable_collisions link1="Left hand 1" link2="Left hand 2" reason="Adjacent"/>
+    <disable_collisions link1="Left hand 1" link2="Right hand 0" reason="Never"/>
+    <disable_collisions link1="Left hand 1" link2="Right hand 1" reason="Never"/>
+    <disable_collisions link1="Left hand 1" link2="Right hand 2" reason="Never"/>
+    <disable_collisions link1="Left hand 2" link2="Left hand 3" reason="Adjacent"/>
+    <disable_collisions link1="Left hand 2" link2="Right hand 0" reason="Never"/>
+    <disable_collisions link1="Left hand 2" link2="Right hand 1" reason="Never"/>
+    <disable_collisions link1="Left hand 2" link2="Right hand 2" reason="Never"/>
+    <disable_collisions link1="Right hand 0" link2="Right hand 1" reason="Adjacent"/>
+    <disable_collisions link1="Right hand 0" link2="Right hand 2" reason="Never"/>
+    <disable_collisions link1="Right hand 0" link2="Right hand 3" reason="Never"/>
+    <disable_collisions link1="Right hand 1" link2="Right hand 2" reason="Adjacent"/>
+    <disable_collisions link1="Right hand 2" link2="Right hand 3" reason="Adjacent"/>
+</robot>
