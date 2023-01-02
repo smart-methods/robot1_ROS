@@ -22,7 +22,7 @@ $ sudo apt-get install ros-noetic-ros-controllers ros-noetic-ros-control
 ![joint_state_publisher](joint_state_publisher.PNG)
 
 
-### Controlling the robot arm by Moveit and kinematics
+### Controlling the robot by Moveit and kinematics
 Choose either "left_hand" or "right_hand" from "Planning Group"
 
 ```$ roslaunch robot1_moveit_pkg demo.launch```
